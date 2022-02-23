@@ -6,7 +6,7 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:58:08 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/23 17:50:26 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 21:18:13 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,7 @@
 void	put_message(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(philo->print_mutex);
-	if (!*(philo->stop_flag))
+	if (!philo_is_dead(philo) && !*(philo->stop_flag))
 		printf("%d %d %s\n", get_time_for_print(philo), philo->num, str);
-	pthread_mutex_unlock(philo->print_mutex);
-}
-
-void	put_death_message(t_philo *philo)
-{
-	pthread_mutex_lock(philo->print_mutex);
-	printf("%d %d %s\n", get_time_for_print(philo), philo->num, "died");
 	pthread_mutex_unlock(philo->print_mutex);
 }

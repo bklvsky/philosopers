@@ -6,7 +6,7 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:09:48 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/23 17:50:38 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:57:12 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_data
 
 # define ERR_ARG -2
 
-void	parse_arguments(int argc, char **argv, t_args *data);
+int		parse_arguments(int argc, char **argv, t_args *data);
 
 int		init_data(t_data *data);
 
@@ -72,7 +72,6 @@ void	take_forks(t_philo *philo);
 int		check_if_philos_have_eaten(t_philo *philo);
 
 void	put_message(t_philo *philo, char *str);
-void	put_death_message(t_philo *philo);
 
 void	*death_check_thread(void *structure);
 int		philo_is_dead(t_philo *philo);

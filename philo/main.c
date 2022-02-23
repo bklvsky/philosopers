@@ -6,7 +6,7 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:15:30 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 15:15:30 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:52:50 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ int	main(int argc, char **argv)
 time_to_sleep [number_of_times_each_philosopher_must_eat]\n", 112);
 		return (1);
 	}
-	parse_arguments(argc, argv, &(data.args));
+	if (parse_arguments(argc, argv, &(data.args)) < 0)
+		return (1);
 	if (init_data(&data) != -1)
 		launch_philo(&data);
+	else
+		write(2, "Memory error\n", 13);
+	usleep(100);
 	free_all(data);
 	return (0);
 }

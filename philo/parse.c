@@ -6,13 +6,13 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 17:01:24 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 15:58:53 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:45:26 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	parse_arguments(int argc, char **argv, t_args *data)
+int	parse_arguments(int argc, char **argv, t_args *data)
 {
 	data->num_of_philos = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -27,6 +27,7 @@ void	parse_arguments(int argc, char **argv, t_args *data)
 														data->num_to_eat == 0)
 	{
 		write(2, "Error in arguments\n", 19);
-		exit(1);
+		return (-1);
 	}
+	return (0);
 }

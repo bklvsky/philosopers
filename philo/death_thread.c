@@ -6,7 +6,7 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:51:01 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/23 17:57:36 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 21:10:12 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*death_check_thread(void *structure)
 		if (philo_is_dead(philo) || *(philo->stop_flag))
 			break ;
 		pthread_mutex_unlock(philo->print_mutex);
-		usleep(100);
+		usleep(10);
 	}
 	pthread_mutex_unlock(philo->print_mutex);
 	if (philo->args.num_of_philos == 1)
