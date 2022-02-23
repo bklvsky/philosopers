@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dselmy <dselmy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:58:08 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 18:13:37 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 17:50:26 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_message(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(philo->print_mutex);
-	if (!is_time_to_stop(philo))
+	if (!*(philo->stop_flag))
 		printf("%d %d %s\n", get_time_for_print(philo), philo->num, str);
 	pthread_mutex_unlock(philo->print_mutex);
 }

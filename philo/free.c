@@ -6,7 +6,7 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 22:21:39 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 15:12:07 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 17:59:00 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	free_all(t_data data)
 	free(data.philosophers);
 	pthread_mutex_destroy(&data.waiter);
 	pthread_mutex_destroy(&data.print_mutex);
-	pthread_mutex_destroy(&data.check_mutex);
 }

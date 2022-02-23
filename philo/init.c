@@ -6,7 +6,7 @@
 /*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:46:20 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 15:12:01 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 17:57:11 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static t_philo	*init_philos(int num_of_philos, t_data *data)
 		philos[i].eat_count = data->eat_count;
 		philos[i].ate_everything = data->eat_count + i;
 		philos[i].stop_flag = &data->stop_flag;
-		philos[i].check_mutex = &data->check_mutex;
 	}
 	return (philos);
 }
@@ -72,8 +71,7 @@ int	init_data(t_data *data)
 	if (!data->philosophers)
 		return (-1);
 	if (pthread_mutex_init(&data->waiter, NULL) != 0 || \
-	pthread_mutex_init(&data->print_mutex, NULL) != 0 || \
-	pthread_mutex_init(&data->check_mutex, NULL) != 0)
+	pthread_mutex_init(&data->print_mutex, NULL) != 0)
 		return (-1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dselmy <dselmy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:09:48 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 18:29:16 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 17:50:38 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_philo
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*waiter;
 	pthread_mutex_t	*print_mutex;
-	pthread_mutex_t	*check_mutex;
 	int				left_to_eat;
 	int				*eat_count;
 	int				*ate_everything;
@@ -49,7 +48,6 @@ typedef struct s_data
 {
 	t_philo			*philosophers;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	check_mutex;
 	pthread_mutex_t	waiter;
 	pthread_mutex_t	print_mutex;
 	int				*eat_count;
@@ -77,7 +75,6 @@ void	put_message(t_philo *philo, char *str);
 void	put_death_message(t_philo *philo);
 
 void	*death_check_thread(void *structure);
-int		is_time_to_stop(t_philo *philo);
 int		philo_is_dead(t_philo *philo);
 
 int		get_time_ms(void);

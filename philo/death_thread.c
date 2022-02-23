@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   death_thread.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dselmy <dselmy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dselmy <dselmy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:51:01 by dselmy            #+#    #+#             */
-/*   Updated: 2022/02/21 18:29:14 by dselmy           ###   ########.fr       */
+/*   Updated: 2022/02/23 17:57:36 by dselmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
-
-int	is_time_to_stop(t_philo *philo)
-{
-	int		ret;
-
-	pthread_mutex_lock(philo->check_mutex);
-	ret = *(philo->stop_flag);
-	pthread_mutex_unlock(philo->check_mutex);
-	return (ret);
-}
 
 int	philo_is_dead(t_philo *philo)
 {
@@ -66,14 +56,11 @@ void	*death_check_thread(void *structure)
 	while (1)
 	{
 		pthread_mutex_lock(philo->print_mutex);
-		pthread_mutex_lock(philo->check_mutex);
 		if (philo_is_dead(philo) || *(philo->stop_flag))
 			break ;
-		pthread_mutex_unlock(philo->check_mutex);
 		pthread_mutex_unlock(philo->print_mutex);
 		usleep(100);
 	}
-	pthread_mutex_unlock(philo->check_mutex);
 	pthread_mutex_unlock(philo->print_mutex);
 	if (philo->args.num_of_philos == 1)
 		pthread_mutex_unlock(philo->left_fork);
